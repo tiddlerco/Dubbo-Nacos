@@ -1,0 +1,26 @@
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          lowerCaseServiceId: true
+          enabled: true
+      routes:
+        - id: user
+          uri: lb://dubbo-user
+          predicates:
+            - Path=/api-user/**
+          filters:
+            - StripPrefix=1
+        - id: product
+          uri: lb://dubbo-product
+          predicates:
+            - Path=/api-product/**
+          filters:
+            - StripPrefix=1
+        - id: order
+          uri: lb://dubbo-order
+          predicates:
+            - Path=/api-order/**
+          filters:
+            - StripPrefix=1

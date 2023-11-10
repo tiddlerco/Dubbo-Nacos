@@ -1,0 +1,16 @@
+dubbo:
+  scan:
+    base-packages: com.dubbo.user.service
+  protocols:
+    dubbo:
+      name: dubbo
+      port: -1
+  registry:
+    address: spring-cloud://localhost
+  consumer:
+    timeout: 5000
+    check: false
+    retries: 0
+  cloud:
+    # 若需订阅多应用，使用 "," 分割
+    subscribed-services: dubbo-product,dubbo-order
