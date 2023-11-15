@@ -19,5 +19,25 @@ public class UserController {
         return userService.queryOrder(userId);
     }
 
+    /**
+     * 用于测试登录
+     * @param nickname
+     * @param password
+     * @return
+     */
+    @GetMapping("/user/login")
+    private String login(String nickname, String password) {
+        return userService.login(nickname,password);
+    }
+
+    /**
+     * 用于测试不登录调用接口
+     * @return
+     */
+    @GetMapping("/get/user")
+    private String getUser() {
+        return "yuke";
+    }
+
 
 }

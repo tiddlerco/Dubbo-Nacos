@@ -1,6 +1,7 @@
 package com.dubbo.user.service.impl;
 
 
+import cn.dev33.satoken.stp.StpUtil;
 import com.dubbo.api.dto.OrderDTO;
 import com.dubbo.api.service.OrderService;
 import com.dubbo.user.service.UserService;
@@ -20,6 +21,19 @@ public class UserServiceImpl implements UserService {
             return new OrderDTO();
         }
         return orderService.queryOrder(userId);
+    }
+
+    @Override
+    public String login(String nickname, String password) {
+
+        if (nickname.equals("yuke")&&password.equals("123")){
+            StpUtil.login(6666);
+            // 在登录时缓存 user 对象
+            StpUtil.getSession().set("user", "yuke");
+            return "success";
+        }
+
+        return "password is not correct";
     }
 
 }

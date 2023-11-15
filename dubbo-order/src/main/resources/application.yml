@@ -19,4 +19,5 @@ dubbo:
     check: false
     retries: 0
   cloud:
+    #服务如果不指定具体服务Dubbo将尝试自动发现并订阅所有可用的服务
     subscribed-services: dubbo-product

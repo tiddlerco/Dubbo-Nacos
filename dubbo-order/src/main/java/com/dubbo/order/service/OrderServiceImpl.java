@@ -5,15 +5,13 @@ import com.dubbo.api.dto.ProductDTO;
 import com.dubbo.api.service.OrderService;
 import com.dubbo.api.service.ProduceService;
 import org.apache.dubbo.config.annotation.Reference;
-import org.apache.dubbo.config.annotation.Service;
+import org.springframework.stereotype.Service;
 
-import javax.ws.rs.Path;
 import java.util.Date;
 import java.util.Objects;
 
 
 @Service
-@Path("/order")
 public class OrderServiceImpl implements OrderService {
 
 

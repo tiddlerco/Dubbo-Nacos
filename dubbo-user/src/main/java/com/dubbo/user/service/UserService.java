@@ -6,4 +6,7 @@ public interface UserService {
 
     OrderDTO queryOrder(String userId);
 
+
+    String login(String nickname, String password);
+
 }
