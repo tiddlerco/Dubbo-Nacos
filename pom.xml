@@ -22,11 +22,21 @@
         <sa-token-spring-boot-starter.version>1.35.0.RC</sa-token-spring-boot-starter.version>
         <sa-token-reactor-spring-boot-starter.version>1.37.0</sa-token-reactor-spring-boot-starter.version>
         <commons-pool2.version>2.11.1</commons-pool2.version>
+        <hutool.version>5.8.22</hutool.version>
     </properties>
 
     <dependencyManagement>
 
         <dependencies>
+
+            <!-- hutool 的依赖配置-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-bom</artifactId>
+                <version>${hutool.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
 
             <dependency>
                 <groupId>cn.dev33</groupId>

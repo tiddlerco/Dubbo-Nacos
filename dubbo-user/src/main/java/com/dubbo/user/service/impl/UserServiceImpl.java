@@ -4,6 +4,7 @@ package com.dubbo.user.service.impl;
 import cn.dev33.satoken.stp.StpUtil;
 import com.dubbo.api.dto.OrderDTO;
 import com.dubbo.api.service.OrderService;
+import com.dubbo.user.exception.UserException;
 import com.dubbo.user.service.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.dubbo.config.annotation.Reference;
@@ -31,9 +32,10 @@ public class UserServiceImpl implements UserService {
             // 在登录时缓存 user 对象
             StpUtil.getSession().set("user", "yuke");
             return "success";
+        }else {
+            throw new UserException("user.password.not.match", "yuke");
         }
 
-        return "password is not correct";
     }
 
 }
