@@ -9,7 +9,7 @@
 	<id>dubbo-user</id>
 
 	<classpath>
-		<dir name="/Users/study/Dubbo-Nacos/dubbo-user/target/classes">
+		<dir name="/Users/yuke/study/Dubbo-Nacos/dubbo-user/target/classes">
 		</dir>
 	</classpath>
 

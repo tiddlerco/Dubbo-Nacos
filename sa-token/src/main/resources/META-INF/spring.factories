@@ -1,1 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=config.SaTokenConfigure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=config.SaTokenConfigure,config.MySaTokenListener
