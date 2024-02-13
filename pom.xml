@@ -6,9 +6,10 @@
 
     <groupId>com.dubbo</groupId>
     <artifactId>Dubbo-Nacos</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${revision}</version>
     <packaging>pom</packaging>
     <properties>
+        <revision>0.0.1-SNAPSHOT</revision>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -23,11 +24,25 @@
         <sa-token-reactor-spring-boot-starter.version>1.37.0</sa-token-reactor-spring-boot-starter.version>
         <commons-pool2.version>2.11.1</commons-pool2.version>
         <hutool.version>5.8.22</hutool.version>
+        <mybatis-plus.version>3.5.3</mybatis-plus.version>
+        <mysql-connector-java>8.0.28</mysql-connector-java>
     </properties>
 
     <dependencyManagement>
 
         <dependencies>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector-java}</version>
+            </dependency>
 
             <!-- hutool 的依赖配置-->
             <dependency>
@@ -97,5 +112,6 @@
         <module>dubbo-product</module>
         <module>dubbo-order</module>
         <module>sa-token</module>
+        <module>dubbo-common</module>
     </modules>
 </project>
