@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false" scan="true" scanPeriod="1 seconds">
+
+    <contextName>logback</contextName>
+    <property name="log.path" value="/tmp/data/applogs/xxl-job/default_log"/>
+
+    <!-- 控制台输出 -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+
+    <!-- 第一个日志文件，默认的输出日志-->
+    <!-- 文件输出 -->
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}.%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
+            <pattern>%date %level [%thread] %logger{36} [%file : %line] %msg%n</pattern>
+        </encoder>
+    </appender>
+    <!-- 根日志级别 默认只有ref="console"，表示日志输出到控制台 -->
+    <!-- ref="file"，表示日志输出到文件，也是默认的输出日志，　例如log.info("输出日志") -->
+    <root level="info">
+        <appender-ref ref="console"/>
+        <appender-ref ref="file"/>
+    </root>
+
+
+
+
+    <!-- 第二个日志文件-->
+    <!-- 配合private final static Logger adsIpUaLog = LoggerFactory.getLogger("SECOND_LOG")使用 -->
+    <appender name="secondLogFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/tmp/data/applogs/xxl-job/second_log.%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
+            <pattern>%date %level [%thread] %logger{36} [%file : %line] %msg%n</pattern>
+        </encoder>
+    </appender>
+    <!--level="INFO"会打印INFO和ERROR日志-->
+    <logger name="SECOND_LOG" level="INFO" additivity="false">
+        <appender-ref ref="secondLogFile"/>
+    </logger>
+
+    <!-- Spring Web模块日志级别 -->
+    <logger name="org.springframework.web" level="INFO"/>
+
+    <!-- 自定义包日志级别 -->
+    <logger name="com.example" level="DEBUG"/>
+
+</configuration>
